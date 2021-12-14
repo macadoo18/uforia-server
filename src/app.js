@@ -12,9 +12,14 @@ const app = express();
 app.use(express.json());
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
+const corsOptions = {
+  origin: '*',
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
 app.use(morgan(morganOption));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(helmet());
 
 app.use("/api/tasks", tasksRouter);
