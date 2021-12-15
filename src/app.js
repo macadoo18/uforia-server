@@ -14,7 +14,7 @@ app.use(express.json());
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
 app.use(morgan(morganOption));
-app.use(cors({ origin: 'https://habit-app-i8t5lr4p5-halemd30.vercel.app' }));
+// app.use(cors({ origin: 'https://habit-app-i8t5lr4p5-halemd30.vercel.app' }));
 // app.use(helmet());
 
 app.use("/api/tasks", tasksRouter);
@@ -25,14 +25,17 @@ app.get("/", (req, res, next) => {
   res.send("You've reached app.js");
 });
 
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', 'https://habit-app.vercel.app');
-//   res.header(
-//     'Access-Control-Allow-Headers',
-//     'Origin, X-Requested-With, Content-Type, Accept'
-//   );
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader(
+    'Access-Control-Allow-Origin',
+    'https://habit-app-i8t5lr4p5-halemd30.vercel.app'
+  );
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
