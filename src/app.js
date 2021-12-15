@@ -15,7 +15,7 @@ const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
 app.use(morgan(morganOption));
 app.use(cors({ origin: 'https://habit-app-i8t5lr4p5-halemd30.vercel.app' }));
-app.use(helmet());
+// app.use(helmet());
 
 app.use("/api/tasks", tasksRouter);
 app.use("/api/auth", authRouter);
