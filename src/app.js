@@ -14,21 +14,21 @@ app.use(express.json());
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
 app.use(morgan(morganOption));
-// app.use(cors({ origin: 'https://habit-app-i8t5lr4p5-halemd30.vercel.app' }));
-// app.use(helmet());
+app.use(cors({ origin: 'https://habit-app.vercel.app' }));
+app.use(helmet());
 
-app.use((req, res, next) => {
-  console.log('adds cors headers!');
-  res.set(
-    'Access-Control-Allow-Origin',
-    'https://habit-app.vercel.app'
-  );
-  res.set(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log('adds cors headers!');
+//   res.set(
+//     'Access-Control-Allow-Origin',
+//     'https://habit-app.vercel.app'
+//   );
+//   res.set(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept'
+//   );
+//   next();
+// });
 
 app.use("/api/tasks", tasksRouter);
 app.use("/api/auth", authRouter);
