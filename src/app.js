@@ -17,14 +17,6 @@ app.use(morgan(morganOption));
 // app.use(cors({ origin: 'https://habit-app-i8t5lr4p5-halemd30.vercel.app' }));
 // app.use(helmet());
 
-app.use("/api/tasks", tasksRouter);
-app.use("/api/auth", authRouter);
-app.use("/api/users", usersRouter);
-
-app.get("/", (req, res, next) => {
-  res.send("You've reached app.js");
-});
-
 app.use((req, res, next) => {
   res.setHeader(
     'Access-Control-Allow-Origin',
@@ -36,6 +28,16 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+app.use("/api/tasks", tasksRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/users", usersRouter);
+
+app.get("/", (req, res, next) => {
+  res.send("You've reached app.js");
+});
+
+
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
