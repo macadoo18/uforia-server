@@ -18,11 +18,12 @@ app.use(morgan(morganOption));
 // app.use(helmet());
 
 app.use((req, res, next) => {
-  res.setHeader(
+  console.log('adds cors headers!');
+  res.set(
     'Access-Control-Allow-Origin',
-    'https://habit-app-i8t5lr4p5-halemd30.vercel.app'
+    'https://habit-app.vercel.app'
   );
-  res.header(
+  res.set(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
   );
