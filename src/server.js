@@ -8,6 +8,7 @@ const db = knex({
   client: "pg",
   connection:
     process.env.NODE_ENV === "test" ? TEST_DATABASE_URL : DATABASE_URL,
+  SSL: true
 });
 
 app.set("db", db);
