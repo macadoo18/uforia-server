@@ -4,7 +4,8 @@ module.exports = {
   PORT: process.env.PORT || 8080,
   JWT_SECRET: process.env.JWT_SECRET || 'change-this-secret',
   DATABASE_URL:
-    process.env.DATABASE_URL || 'postgres://habituser:habit1234@localhost/habitapp',
+    process.env.DATABASE_URL + '?ssl=true' ||
+    'postgres://habituser:habit1234@localhost/habitapp',
 
   TEST_DATABASE_URL:
     console.log(process.env.TEST_DATABASE_URL) ||
